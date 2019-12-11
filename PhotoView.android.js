@@ -31,8 +31,22 @@ export default class PhotoView extends React.PureComponent {
       onScale: PropTypes.func,
       onTap: PropTypes.func,
       onViewTap: PropTypes.func,
+      onMount: PropTypes.func,
+      onUnMount: PropTypes.func,
       ...ViewPropTypes,
     };
+
+    componentDidMount() {
+        if (typeof this.props.onMount !== "undefined") { 
+            this.props.onMount();
+        }
+    }
+
+    componentWillUnmount() {
+        if (typeof this.props.onUnMount !== "undefined") { 
+            this.props.onUnMount();
+        }
+    }
 
     render () {
       const {
